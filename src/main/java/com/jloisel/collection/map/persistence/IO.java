@@ -10,8 +10,6 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.StandardOpenOption;
 import java.nio.file.attribute.BasicFileAttributes;
 
-import com.google.common.collect.Iterables;
-
 final class IO {
 	static final byte[] EMPTY_BYTES = new byte[0];
 
@@ -33,10 +31,6 @@ final class IO {
 
 	static boolean canRead(final Path file) {
 		return Files.isReadable(file) && Files.isRegularFile(file);
-	}
-
-	static int size(final Path directory) throws IOException {
-		return Iterables.size(iterable(directory));
 	}
 
 	static Iterable<Path> iterable(final Path directory) throws IOException {

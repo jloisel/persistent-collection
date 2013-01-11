@@ -24,11 +24,6 @@ final class None implements Persistence {
 	}
 
 	@Override
-	public int count() {
-		return 0;
-	}
-
-	@Override
 	public void write(final String key, final byte[] serialized) throws IOException {
 		
 	}

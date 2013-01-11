@@ -11,21 +11,12 @@ import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 
-final class FileUtils implements Persistence {
+final class FileSystem implements Persistence {
 	private final Path directory;
 	
-	public FileUtils(final Path directory) {
+	public FileSystem(final Path directory) {
 		super();
 		this.directory = checkNotNull(directory);
-	}
-
-	@Override
-	public int count() {
-		try {
-			return Iterables.size(IO.iterable(directory));
-		} catch (final IOException e) {
-			return 0;
-		}
 	}
 
 	@Override

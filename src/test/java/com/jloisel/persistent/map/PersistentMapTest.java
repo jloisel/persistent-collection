@@ -79,7 +79,7 @@ public class PersistentMapTest extends TestCase {
 					final Entry<String, JunitP> persistent = (Entry<String, JunitP>)entry;
 					map.put(persistent.getKey(), persistent.getValue());
 				}
-				return map;
+				return new PersistentMapBuilder<JunitP>().persistOn(Persistences.toFilesystem(TMP)).build();
 			} catch (final IOException e) {
 				fail(e.getMessage());
 			}

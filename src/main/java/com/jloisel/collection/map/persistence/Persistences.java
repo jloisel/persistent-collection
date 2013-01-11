@@ -13,6 +13,6 @@ public final class Persistences {
 	}
 	
 	public static Persistence toFilesystem(final Path directory) {
-		return new FileUtils(directory);
+		return new FileSystem(directory);
 	}
 }
