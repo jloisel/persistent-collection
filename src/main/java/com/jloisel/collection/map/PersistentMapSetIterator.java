@@ -1,6 +1,7 @@
 package com.jloisel.collection.map;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -31,6 +32,7 @@ final class PersistentMapSetIterator<E> extends ForwardingIterator<E> {
 
 	@Override
 	public void remove() {
+		checkState(current != null);
 		try {
 			super.remove();
 		} finally {
@@ -38,6 +40,8 @@ final class PersistentMapSetIterator<E> extends ForwardingIterator<E> {
 				persistence.remove(toKey.apply(current));
 			} catch (final IOException e) {
 				// ignored
+			} finally {
+				current = null;
 			}
 		}
 	}
