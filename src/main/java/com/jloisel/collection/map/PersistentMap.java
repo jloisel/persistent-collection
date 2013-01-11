@@ -25,12 +25,14 @@ final class PersistentMap<V extends Persistent> extends ForwardingMap<String, V>
 	private final Externalizer<V> externalizer;
 	private final Persistence persistence;
 
-	PersistentMap(final PersistentMapBuilder<V> builder) throws IOException {
+	PersistentMap(
+			final Map<String, V> delegate, 
+			final Externalizer<V> externalizer, 
+			final Persistence persistence) throws IOException {
 		super();
-		checkNotNull(builder);
-		this.delegate = checkNotNull(builder.delegate);
-		this.externalizer = checkNotNull(builder.externalizer);
-		this.persistence = checkNotNull(builder.persistence);
+		this.delegate = checkNotNull(delegate);
+		this.externalizer = checkNotNull(externalizer);
+		this.persistence = checkNotNull(persistence);
 		
 		for(final String key : persistence) {
 			put(key, externalizer.unserialize(persistence.read(key)));

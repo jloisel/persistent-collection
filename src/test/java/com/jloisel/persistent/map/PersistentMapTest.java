@@ -26,6 +26,7 @@ import com.google.common.collect.testing.features.MapFeature;
 import com.google.common.io.Files;
 import com.jloisel.collection.map.Persistent;
 import com.jloisel.collection.map.PersistentMapBuilder;
+import com.jloisel.collection.map.persistence.Persistences;
 
 public class PersistentMapTest extends TestCase {
 
@@ -73,7 +74,7 @@ public class PersistentMapTest extends TestCase {
 			}
 			Map<String, JunitP> map;
 			try {
-				map = new PersistentMapBuilder<JunitP>().build();
+				map = new PersistentMapBuilder<JunitP>().persistOn(Persistences.toFilesystem(TMP)).build();
 				for(final Object entry : entries) {
 					final Entry<String, JunitP> persistent = (Entry<String, JunitP>)entry;
 					map.put(persistent.getKey(), persistent.getValue());

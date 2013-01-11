@@ -28,9 +28,9 @@ import com.jloisel.collection.map.persistence.Persistences;
  * @param <V> type of value being stored
  */
 public final class PersistentMapBuilder<V extends Persistent> {
-	Map<String, V> delegate = Maps.newHashMap();
-	Persistence persistence = Persistences.none();
-	Externalizer<V> externalizer = Externalizers.serializable();
+	private Map<String, V> delegate = Maps.newHashMap();
+	private Persistence persistence = Persistences.none();
+	private Externalizer<V> externalizer = Externalizers.serializable();
 	
 	/**
 	 * New persistent map builder.
@@ -84,6 +84,6 @@ public final class PersistentMapBuilder<V extends Persistent> {
 	 * @throws IOException if any 
 	 */
 	public Map<String, V> build() throws IOException {
-		return new PersistentMap<>(this);
+		return new PersistentMap<>(delegate, externalizer, persistence);
 	}
 }

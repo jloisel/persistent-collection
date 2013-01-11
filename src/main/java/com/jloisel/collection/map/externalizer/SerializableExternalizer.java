@@ -50,7 +50,9 @@ final class SerializableExternalizer<V extends Serializable> implements External
 		} catch (final ClassNotFoundException e) {
 			throw new IOException(e);
 		} finally {
-			input.close();
+			if(input != null) {
+				input.close();
+			}
 		}
 	}
 }
