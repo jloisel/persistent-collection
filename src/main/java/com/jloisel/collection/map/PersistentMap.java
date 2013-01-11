@@ -70,7 +70,7 @@ final class PersistentMap<V extends Persistent> extends ForwardingMap<String, V>
 			return super.put(checkNotNull(key), checkNotNull(value));
 		} finally {
 			try {
-				persistence.write(key, externalizer.serialize(value));
+				persistence.persist(key, externalizer.serialize(value));
 			} catch (final IOException e) {
 				// cannot be rethrown
 			}

@@ -20,7 +20,7 @@ final class FileSystem implements Persistence {
 	}
 
 	@Override
-	public void write(final String key, final byte[] serialized) throws IOException {
+	public void persist(final String key, final byte[] serialized) throws IOException {
 		final Path path = toPath(key);
 		if(!IO.canRead(path)) {
 			Files.createFile(path);
@@ -37,7 +37,7 @@ final class FileSystem implements Persistence {
 	}
 
 	@Override
-	public boolean canRead(final String key) {
+	public boolean exists(final String key) {
 		return IO.canRead(toPath(key));
 	}
 

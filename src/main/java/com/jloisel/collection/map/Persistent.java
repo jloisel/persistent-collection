@@ -1,10 +1,12 @@
 package com.jloisel.collection.map;
 
 import java.io.Serializable;
+import java.util.Map;
 
 
 /**
- * Class instance which can be persisted.
+ * Objects being stored as value in Persistent {@link Map} must 
+ * implement this interface.
  * 
  * @author jerome
  *
