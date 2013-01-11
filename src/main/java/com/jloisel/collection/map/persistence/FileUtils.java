@@ -11,10 +11,10 @@ import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 
-final class Filesystem implements Persistence {
+final class FileUtils implements Persistence {
 	private final Path directory;
 	
-	public Filesystem(final Path directory) {
+	public FileUtils(final Path directory) {
 		super();
 		this.directory = checkNotNull(directory);
 	}

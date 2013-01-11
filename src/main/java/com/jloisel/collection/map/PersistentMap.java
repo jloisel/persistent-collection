@@ -4,6 +4,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Set;
 
 import com.google.common.collect.ForwardingMap;
 import com.jloisel.collection.map.externalizer.Externalizer;
@@ -72,6 +73,16 @@ final class PersistentMap<V extends Persistent> extends ForwardingMap<String, V>
 				// cannot be rethrown
 			}
 		}
+	}
+	
+	@Override
+	public Set<String> keySet() {
+		return new KeySet<>(super.keySet(), persistence);
+	}
+	
+	@Override
+	public Set<Entry<String, V>> entrySet() {
+		return new EntrySet<>(super.entrySet(), persistence);
 	}
 	
 	@Override
