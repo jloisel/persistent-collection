@@ -3,7 +3,7 @@ persistent-collection
 
 Usage:
 
-    Map<String, Persistent> map= new PersistentMapBuilder<>()
+    Map<String, Persistent> map = new PersistentMapBuilder<>()
       .externalizeUsing(Externalizers.serializable())
       .persistOn(Persistences.fileSystem("directory"))
       .build();
