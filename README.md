@@ -8,6 +8,7 @@ Usage:
     	  .externalizeUsing(Externalizers.serializable())
     	  .persistOn(Persistences.fileSystem("directory"))
     	  .build();
+```
 
 Persistent Map with configurable:
 - Persistence: persist to anywhere.
