@@ -19,11 +19,6 @@ final class None implements Persistence {
 	}
 
 	@Override
-	public boolean exists(final String key) {
-		return false;
-	}
-
-	@Override
 	public void persist(final String key, final byte[] serialized) throws IOException {
 		
 	}

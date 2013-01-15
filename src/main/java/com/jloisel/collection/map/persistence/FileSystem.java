@@ -37,11 +37,6 @@ final class FileSystem implements Persistence {
 	}
 
 	@Override
-	public boolean exists(final String key) {
-		return IO.canRead(toPath(key));
-	}
-
-	@Override
 	public void remove(final String key) throws IOException {
 		IO.delete(toPath(key));
 	}
@@ -72,6 +67,7 @@ final class FileSystem implements Persistence {
 			this.directory = directory;
 		}
 		
+		@Override
 		public String apply(final Path path) {
 			return directory.relativize(path).toString();
 		}

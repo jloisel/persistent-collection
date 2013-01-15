@@ -10,16 +10,6 @@ import java.io.IOException;
  *
  */
 public interface Persistence extends Iterable<String> {
-
-	/**
-	 * Returns {@code true} when an object has been persisted 
-	 * for this key.
-	 * 
-	 * @param key key associated to the persisted object
-	 * @return Returns {@code true} when an object has been persisted 
-	 * for this key.
-	 */
-	boolean exists(final String key);
 	
 	/**
 	 * Persists serialized bytes with associated key.

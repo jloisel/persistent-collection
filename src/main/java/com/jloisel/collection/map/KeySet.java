@@ -2,7 +2,7 @@ package com.jloisel.collection.map;
 
 import java.util.Set;
 
-import javax.annotation.Nullable;
+import javax.annotation.Nonnull;
 
 import com.google.common.base.Function;
 import com.jloisel.collection.map.persistence.Persistence;
@@ -15,8 +15,8 @@ final class KeySet<E> extends PersistentMapSet<E>{
 	
 	static final class ToKey<E> implements Function<E, String> {
 		@Override
-		public String apply(@Nullable final E key) {
-			return key == null ? null : String.valueOf(key);
+		public String apply(@Nonnull final E key) {
+			return String.valueOf(key);
 		}	
 	}
 }

@@ -25,21 +25,18 @@ abstract class PersistentMapSet<E> extends ForwardingSet<E> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean retainAll(final Collection<?> collection) {
-		if(super.retainAll(collection)) {
-			for(final Object obj : this) {
-				if(collection.contains(obj)) {
-					continue;
-				}
-				
-				try {
-					persistence.remove(toKey.apply((E) obj));
-				} catch (final IOException e) {
-					// ignored
-				}
+		for(final Object obj : this) {
+			if(collection.contains(obj)) {
+				continue;
 			}
-			return true;
+
+			try {
+				persistence.remove(toKey.apply((E) obj));
+			} catch (final IOException e) {
+				// ignored
+			}
 		}
-		return false;
+		return super.retainAll(collection);
 	}
 
 	@Override
@@ -64,7 +61,7 @@ abstract class PersistentMapSet<E> extends ForwardingSet<E> {
 		}
 		return false;
 	}
-	
+
 	@Override
 	public void clear() {
 		try {
